@@ -5,6 +5,7 @@ CREATE EXTERNAL TABLE transactions (
 	--id,chain,dept,category,company,brand,date,productsize,productmeasure,purchasequantity,purchaseamount
 	id BIGINT,
 	chain INT,
+	dept INT,
 	category INT,
 	company BIGINT,
 	brand BIGINT,
