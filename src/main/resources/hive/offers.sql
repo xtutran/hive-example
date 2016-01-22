@@ -1,6 +1,7 @@
 USE cloudera;
 
-CREATE EXTERNAL TABLE IF NOT EXISTS offers (
+DROP TABLE IF EXISTS offers;
+CREATE EXTERNAL TABLE offers (
 	--offer,category,quantity,company,offervalue,brand
 	offerid BIGINT,
 	category BIGINT,

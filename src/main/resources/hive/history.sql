@@ -1,13 +1,14 @@
 USE cloudera;
 
-CREATE EXTERNAL TABLE IF NOT EXISTS history (
-	--id,chain,offer,market,repeattrips,repeater,offerdate
+DROP TABLE IF EXISTS history;
+CREATE EXTERNAL TABLE history (
+	---id,chain,offer,market,repeattrips,repeater,offerdate
 	id BIGINT,
 	chain INT,
 	offerid BIGINT,
 	market INT,
 	repeattrips INT,
-	repeater BOOLEAN,
+	repeater STRING,
 	offerdate STRING
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
