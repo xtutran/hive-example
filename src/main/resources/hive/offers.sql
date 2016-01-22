@@ -7,7 +7,7 @@ CREATE EXTERNAL TABLE offers (
 	category BIGINT,
 	quantity INT,
 	company BIGINT,
-	offervalue INT,
+	offervalue DOUBLE,
 	brand BIGINT
 )
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
