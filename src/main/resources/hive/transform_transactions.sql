@@ -15,7 +15,10 @@ CREATE EXTERNAL TABLE transformed_trans (
 	purchasequantity INT,
 	purchaseamount DOUBLE
 )
+ROW FORMAT DELIMITED
+        FIELDS TERMINATED BY '1'
+
 STORED AS SEQUENCEFILE
 LOCATION '/user/cloudera/rec_data/transformed_trans';
 
-FROM transactions trans INSERT OVERWRITE TABLE transformed_trans SELECT *;
+FROM transactions trans INSERT OVERWRITE TABLE transformed_trans SELECT trans.* LIMIT 100;
