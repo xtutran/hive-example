@@ -10,7 +10,7 @@ CREATE EXTERNAL TABLE transactions (
 	company BIGINT,
 	brand BIGINT,
 	tdate STRING,
-	productsize INT,
+	productsize DOUBLE,
 	productmeasure STRING,
 	purchasequantity INT,
 	purchaseamount DOUBLE
@@ -18,5 +18,4 @@ CREATE EXTERNAL TABLE transactions (
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/rec_data/transactions'
---LOCATION '/user/cloudera/rec_data/small_trans'
 tblproperties("skip.header.line.count"="1"); 
