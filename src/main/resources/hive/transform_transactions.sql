@@ -9,13 +9,15 @@ CREATE EXTERNAL TABLE transformed_trans (
 	category INT,
 	company BIGINT,
 	brand BIGINT,
-	tdate STRING,
-	productsize INT,
+	productsize DOUBLE,
 	productmeasure STRING,
-	purchasequantity INT,
-	purchaseamount DOUBLE
+	purchasequantity INT
 )
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/rec_data/transformed_trans';
 
-FROM transactions trans INSERT OVERWRITE TABLE transformed_trans SELECT trans.*;
+INSERT OVERWRITE TABLE transformed_trans 
+	select id, chain, dept, category, company, brand, productsize, productmeasure, sum(purchasequantity) totalquantity 
+	from  transactions 
+	group by id, chain, dept, category, company, brand, productsize, productmeasure 
+	having totalquantity > 0;
