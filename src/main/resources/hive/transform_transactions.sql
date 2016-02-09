@@ -17,5 +17,5 @@ CREATE EXTERNAL TABLE partitioned_trans (
 PARTITIONED BY(tdate String)
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/rec_data/transformed_trans';
---AS
---SELECT id, chain, dept, category, company, brand, productsize, productmeasure, purchasequantity, purchaseamount, tdate FROM transactions;
+AS
+SELECT id, chain, dept, category, company, brand, productsize, productmeasure, purchasequantity, purchaseamount, tdate FROM transactions;
