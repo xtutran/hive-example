@@ -14,8 +14,7 @@ CREATE EXTERNAL TABLE partitioned_trans (
 	purchasequantity INT,
 	purchaseamount DOUBLE
 )
-PARTITIONED BY (tdate String)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+PARTITIONED BY(tdate String)
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/rec_data/transformed_trans';
 --AS
