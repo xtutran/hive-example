@@ -18,5 +18,4 @@ CREATE EXTERNAL TABLE transactions (
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/rec_data/transactions'
-tblproperties("skip.header.line.count"="1")
-PARTITIONED BY(tdate STRING); 
+tblproperties("skip.header.line.count"="1"); 

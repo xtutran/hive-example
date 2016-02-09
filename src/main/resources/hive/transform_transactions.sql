@@ -1,7 +1,7 @@
 USE cloudera;
 
-DROP TABLE IF EXISTS transformed_trans;
-CREATE EXTERNAL TABLE transformed_trans (
+DROP TABLE IF EXISTS partitioned_trans;
+CREATE EXTERNAL TABLE partitioned_trans (
 	--id,chain,dept,category,company,brand,date,productsize,productmeasure,purchasequantity,purchaseamount
 	id BIGINT,
 	chain INT,
@@ -11,9 +11,12 @@ CREATE EXTERNAL TABLE transformed_trans (
 	brand BIGINT,
 	productsize DOUBLE,
 	productmeasure STRING,
-	purchasequantity INT
+	purchasequantity INT,
+	purchaseamount DOUBLE
 )
+PARTITIONED BY (tdate String)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/rec_data/transformed_trans';
 
-INSERT OVERWRITE TABLE transformed_trans select id, chain, dept, category, company, brand, productsize, productmeasure, sum(purchasequantity) totalquantity from transactions group by id, chain, dept, category, company, brand, productsize, productmeasure having totalquantity > 0;
+INSERT OVERWRITE TABLE partitioned_trans select id, chain, dept, category, company, brand, productsize, productmeasure, purchasequantity, purchaseamount, tdate from transactions;
